@@ -357,7 +357,3 @@ end)
 loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
 print("loaded init script!")
-
-print("Loading decompiler...")
-loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/deec.lua"))()
-print("decompiler loaded")

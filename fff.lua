@@ -1,6 +1,4 @@
--- i will touch you if you PASTE MY INIT SCRIPTTTTTT
-
-if not game:IsLoaded() then game.Loaded:Wait() end
+--if not game:IsLoaded() then game.Loaded:Wait() end
 
 getgenv().consoleclear = function() end
 getgenv().consolecreate = function() end

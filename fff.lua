@@ -368,10 +368,11 @@ end
 
 
 loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
-
+--[[
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "[Surge]",
     Icon = "rbxassetid://101069853971193",
     Text = "Surge Premium Attached!",
     Duration = 5
 })
+]]

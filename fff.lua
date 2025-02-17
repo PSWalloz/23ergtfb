@@ -353,6 +353,12 @@ getgenv().require = newcclosure(function(v)
         return res
     end
 end)
+--[[
+getgenv().decompile = function(script)
+	httpresponse = request({
+			
+end
+]]
 
 loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 

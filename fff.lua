@@ -353,12 +353,19 @@ getgenv().require = newcclosure(function(v)
         return res
     end
 end)
---[[
+
 getgenv().decompile = function(script)
 	httpresponse = request({
-			
+		Url = "https://127.0.0.1:9002",
+		Body = base64.encode(getscriptbytecode(script)),
+		Method = "POST",
+		Headers = {
+			["Content-Type"] = "text/plain"
+		},
+	})
+	return httpresponse.Body
 end
-]]
+
 
 loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 

@@ -1,5 +1,5 @@
 --if not game:IsLoaded() then game.Loaded:Wait() end
---[[
+
 getgenv().consoleclear = function() end
 getgenv().consolecreate = function() end
 getgenv().consoledestroy = function() end
@@ -215,7 +215,7 @@ getgenv().firesignal = function(signal, ...)
         connection.Function(...)
     end
 end
-]]
+
 --[[
 local real_setscriptable = clonefunction(setscriptable)
 local real_isscriptable = clonefunction(isscriptable)
@@ -259,7 +259,7 @@ getgenv().setscriptable = function(self, i, v)
     return wasScriptable
 end
 ]]--
---[[
+
 getgenv().setsimulationradius = function(newRadius)
     assert(newRadius, `arg #1 is missing`)
     assert(type(newRadius) == "number", `arg #1 must be type number`)
@@ -366,8 +366,7 @@ end
 
 --loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
-]]
-print("niggerrrr")
+
 --warn("PSWalloz is a slave ass nigger")
 --[[
 game:GetService("StarterGui"):SetCore("SendNotification",{

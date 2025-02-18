@@ -351,7 +351,7 @@ getgenv().require = newcclosure(function(v)
         return res
     end
 end)
-
+--[[
 getgenv().decompile = function(script)
 	httpresponse = request({
 		Url = "https://127.0.0.1:9002",
@@ -362,7 +362,7 @@ getgenv().decompile = function(script)
 		},
 	})
 	return httpresponse.Body
-end
+end]]
 
 --loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()

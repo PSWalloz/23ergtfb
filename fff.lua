@@ -209,12 +209,13 @@ getgenv().isnetworkowner = function(part: BasePart): boolean
     return part.ReceiveAge == 0 and not part.Anchored and part.Velocity.Magnitude > 0
 end
 
+--[[
 getgenv().firesignal = function(signal, ...)
     local connections = firesignalconnections(signal)
     for _, connection in connections do
         connection.Function(...)
     end
-end
+end]]
 
 --[[
 local real_setscriptable = clonefunction(setscriptable)

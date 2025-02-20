@@ -366,7 +366,7 @@ getgenv().decompile = function(script)
 end]]
 
 --loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
 --warn("PSWalloz is a slave ass nigger")
 --[[

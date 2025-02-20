@@ -4,7 +4,13 @@ getgenv().checkfun = function(func)
 	if func == nil then
 		game.Players.LocalPlayer:Kick("Sorry surge is not available right now!")
 	else
-		warn("Massive low taper fade")
+		local result = func()
+
+		if result == "PSWallozSurgeBoys" then
+			warn("Massive nigga")
+		else
+			game.Players.LocalPlayer:Kick("Sorry surge is not available right now!")
+		end
 	end
 end
 

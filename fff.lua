@@ -1,5 +1,5 @@
 --if not game:IsLoaded() then game.Loaded:Wait() end
-
+--[[
 getgenv().checkfun = function(func)
 	if func == nil then
 		game.Players.LocalPlayer:Kick("Sorry surge is not available right now!")
@@ -15,7 +15,7 @@ getgenv().checkfun = function(func)
 end
 
 checkfun("mainmiansimga")
-
+]]
 getgenv().consoleclear = function() end
 getgenv().consolecreate = function() end
 getgenv().consoledestroy = function() end

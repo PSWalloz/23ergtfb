@@ -1,5 +1,15 @@
 --if not game:IsLoaded() then game.Loaded:Wait() end
 
+getgenv().checkfun = function(func)
+	if func == nil then
+		game.Players.LocalPlayer:Kick("Sorry surge is not available right now!")
+	else
+		warn("Massive low taper fade")
+	end
+end
+
+checkfun("mainmiansimga")
+
 getgenv().consoleclear = function() end
 getgenv().consolecreate = function() end
 getgenv().consoledestroy = function() end

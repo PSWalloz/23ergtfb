@@ -1,5 +1,15 @@
 --if not game:IsLoaded() then game.Loaded:Wait() end
 
+setmetatable(_G, {
+    __newindex = function(t, k, v)
+        if k == "identifyexecutor" then
+            Error("hi") -- Prevent modification
+        else
+            rawset(t, k, v) -- Allow other global variables
+        end
+    end
+})
+
 getgenv().checkfun = function(func)
 	if func == nil then
 		game.Players.LocalPlayer:Kick("Sorry surge is not available right now!")

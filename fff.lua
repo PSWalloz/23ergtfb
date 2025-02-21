@@ -1,9 +1,5 @@
 --if not game:IsLoaded() then game.Loaded:Wait() end
 
-local mt = getmetatable(_G) or {}  
-mt.__metatable = "Locked"  -- Prevent metatable modification
-setmetatable(_G, mt)
-
 setmetatable(_G, {
     __newindex = function(t, k, v)
         if k == "identifyexecutor" then
@@ -13,6 +9,10 @@ setmetatable(_G, {
         end
     end
 })
+
+local mt = getmetatable(_G) or {}  
+mt.__metatable = "Locked"  -- Prevent metatable modification
+setmetatable(_G, mt)
 
 getgenv().checkfun = function(func)
 	if func == nil then

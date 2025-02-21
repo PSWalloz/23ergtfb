@@ -6,10 +6,10 @@ getgenv().checkfun = function(func)
 	else
 		local result = func()
 
-		if result == "PSWallozSurgeBoys" then
+		if result == "jPvLSNhNUZ" then
 			warn("Massive nigga")
 		else
-			game.Players.LocalPlayer:Kick("Sorry surge is not available right now!\ne")
+			game.Players.LocalPlayer:Kick("Sorry siss is not available right now!")
 		end
 	end
 end

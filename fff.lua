@@ -388,13 +388,14 @@ loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
 --warn("PSWalloz is a slave ass nigger")
---[[
+
 local NotiLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/botdevXD/GRUBHUB_TECH/main/NOTI_LIB.lua", true))()
-NotiLib.new("info", "Velocity (Special Message)", "Thank you for using velocity <3")
-]]
+NotiLib.new("info", "Surge", "Thanks for using surge")
+--[[
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "[Surge]",
     Icon = "rbxassetid://101069853971193",
     Text = "Surge Premium Attached!",
     Duration = 5
 })
+]]

@@ -10,10 +10,6 @@ setmetatable(_G, {
     end
 })
 
-local mt = getmetatable(_G) or {}  
-mt.__metatable = "Locked"  -- Prevent metatable modification
-setmetatable(_G, mt)
-
 getgenv().checkfun = function(func)
 	if func == nil then
 		game.Players.LocalPlayer:Kick("Sorry surge is not available right now!")

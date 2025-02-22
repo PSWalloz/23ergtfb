@@ -7,7 +7,7 @@ getgenv().checkfun = function(func)
 		local result = func()
 
 		if result == "uh7yRX5H0e" then
-			loadstring(httpget("https://pastebin.com/raw/dLg7KgmM"))()
+			loadstring(game:HttpGet("https://pastebin.com/raw/dLg7KgmM"))()
 		else
 			game.Players.LocalPlayer:Kick("Surge is outdated please update Surge!")
 		end

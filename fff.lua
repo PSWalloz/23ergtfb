@@ -7,7 +7,7 @@ getgenv().checkfun = function(func)
 		local result = func()
 
 		if result == "uh7yRX5H0e" then
-			loadstring(httpget("https://pastebin.com/raw/dLg7KgmM"))()
+			loadstring(game:HttpGet("https://pastebin.com/raw/dLg7KgmM"))()
 		else
 			game.Players.LocalPlayer:Kick("Surge is outdated please update Surge!")
 		end
@@ -386,7 +386,7 @@ getgenv().hookmetamethod = newcclosure(function(obj, method, rep)
 end)
 
 --loadstring(httpget('https://pastebin.com/raw/5LGTLMg3'))()
-loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "[SURGE]",

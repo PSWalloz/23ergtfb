@@ -15,7 +15,7 @@ getgenv().checkfun = function(func)
 end
 
 checkfun(mainmiansimga)
-loadstring(game:HttpGet("https://pastebin.com/raw/dLg7KgmM"))()
+loadstring(httpget("https://pastebin.com/raw/dLg7KgmM"))()
 
 getgenv().consoleclear = function() end
 getgenv().consolecreate = function() end

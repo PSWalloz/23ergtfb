@@ -151,6 +151,7 @@ getgenv().getactors = newcclosure(function()
     return actors;
 end);
 
+--[[
 getgenv().getnilinstances = function()
     local objs = {}
 	for i,v in next,getreg() do
@@ -164,7 +165,7 @@ getgenv().getnilinstances = function()
 	end
 	return objs
 end
-
+]]
 getgenv().getscripthash = function(script)
     return script:GetHash()
 end

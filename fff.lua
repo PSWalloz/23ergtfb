@@ -389,9 +389,4 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/ref
 
 loadautoexecutor()
 
-game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "[SURGE]",
-    Icon = "rbxassetid://1",
-    Text = "Surge Injected!",
-    Duration = 5
-})
+warn("Surge Loaded!")

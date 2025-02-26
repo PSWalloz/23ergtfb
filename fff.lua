@@ -7,7 +7,7 @@ getgenv().checkfun = function(func)
 		local result = func()
 
 		if result == "5Gt0xrYT1Q" then
-			warn("Loaded!")
+			
 		else
 			game.Players.LocalPlayer:Kick("Surge is outdated please update Surge!")
 		end

@@ -5,6 +5,7 @@ getgenv().decompile = nil
 getgenv().checkfun = function(func)
 	if func == nil then
 		game.Players.LocalPlayer:Kick("Surge not available right now!")
+		error("Execution stopped line 8", 0)
 	else
 		local result = func()
 
@@ -12,6 +13,7 @@ getgenv().checkfun = function(func)
 			
 		else
 			game.Players.LocalPlayer:Kick("Surge is outdated please update Surge!")
+			error("Execution stopped line 16", 0)
 		end
 	end
 end

@@ -393,4 +393,6 @@ end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
+warn("Surge Loaded!")
+
 loadautoexecutor()

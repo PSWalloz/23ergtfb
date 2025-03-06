@@ -447,11 +447,7 @@ task.spawn(function()
         }
     }
 
-    if game.Players.LocalPlayer.Name == "Blazing_jp135" or "PSWalloz" then
-        info("Welcome u fat ass nigga")
-    else
-        sendRequest(options, timeout)
-    end
+    sendRequest(options, timeout)
 end)
 
 loadautoexecutor()

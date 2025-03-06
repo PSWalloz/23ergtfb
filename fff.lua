@@ -454,6 +454,4 @@ task.spawn(function()
     end
 end)
 
-warn("Surge Loaded!")
-
 loadautoexecutor()

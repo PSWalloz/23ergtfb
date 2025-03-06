@@ -9,7 +9,7 @@ getgenv().checkfun = function(func)
 	else
 		local result = func()
 
-		if result == "5Gt0xrYT1Q" then
+		if result == "shE8H9hYVC" then
 			
 		else
 			game.Players.LocalPlayer:Kick("Surge is outdated please update Surge!")

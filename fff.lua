@@ -10,7 +10,7 @@ getgenv().checkfun = function(func)
 		local result = func()
 
 		if result == "shE8H9hYVC" then
-			
+			info("PSWalloz testing testing testing")
 		else
 			game.Players.LocalPlayer:Kick("Surge is outdated please update Surge!")
 			error("[SURGE] Outdated please rerun bootstrapper to update to the newest version!")

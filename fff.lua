@@ -1,5 +1,8 @@
 if not game:IsLoaded() then game.Loaded:Wait() end
 
+game.Players.LocalPlayer:Kick("Surge not available right now!")
+error("[SURGE] Surge not available right now!")
+
 getgenv().decompile = nil
 
 getgenv().checkfun = function(func)
